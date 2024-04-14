@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Navigation</title>
+  <!-- Include Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Include your custom CSS file -->
+  <link rel="stylesheet" href="nav.css">
+</head>
+<body>
+  <h1 class="heading">Campus Navigation</h1>
+  <!-- Wrapper for the map -->
+  <div class="map-wrapper">
+    <!-- Map Container -->
+    <div id="map"></div>
+  </div>
+
+  <!-- Location Buttons -->
+  <div class="location-buttons-container">
+    <div class="location-buttons">
+      <button id="SAC" class="location-button" data-lat="17.54090448861708" data-lng="78.57527103665713">SAC</button>
+      <button id="mess1" class="location-button" data-lat="17.542382724185554" data-lng="78.57383333595718">Mess 1</button>
+      <button id="mess2" class="location-button" data-lat="17.5449069215431" data-lng="78.57519539689511">Mess 2</button>
+      <button id="lib" class="location-button" data-lat="17.545853792704165" data-lng="78.57150321231636">Library</button>
+      <button id="audi" class="location-button" data-lat="17.545513750761355" data-lng="78.57087843149998">Auditorium</button>
+      <button id="cp" class="location-button" data-lat="17.54203796959397" data-lng="78.57576688860827">Connaught Place</button>
+      <button id="fountain" class="location-button" data-lat="17.54688441980337" data-lng="78.57212431161547">Fountain</button>
+      <button id="ll" class="location-button" data-lat="17.546845393115422" data-lng="78.57298386645695">Lover's Lane</button>
+      <button id="rnt" class="location-button" data-lat="17.54080249370755" data-lng="78.57403043467615">Road Not Taken</button>
+      <button id="swmg" class="location-button" data-lat="17.540257034530534" data-lng="78.57677623770725">Swimming Pool</button>
+      <button id="rocks" class="location-button" data-lat="17.5445544074219" data-lng="78.5730200932779">Rock Garden</button>
+      <button id="direc" class="location-button" data-lat="17.542873825568694" data-lng="78.57651452810894">Director's Quarter</button>
+      <button id="mc" class="location-button" data-lat="17.542041484380153" data-lng="78.57645388966053">Medical Centre</button>
+      <button id="gautam" class="location-button" data-lat="17.54169138102485" data-lng="78.574734610412">Gautam Bhawan</button>
+      <button id="valmiki" class="location-button" data-lat="17.545810785048296" data-lng="78.57451717435221">Valmiki Bhawan</button>
+      <button id="malaviya" class="location-button" data-lat="17.54109670881316" data-lng="78.57469265171456">Malaviya Bhawan</button>     
+    </div>
+  </div>
+
+  <!-- Container for the button-specific text -->
+  <div class="button-text-container">
+    <div id="SAC-text" class="button-text" style="display: none;">
+      <h2>SAC</h2>
+      <p>The Student Activities Centre (SAC) is bustling with activity on its two floors. The lower floor offers recreational spaces like pool and billiards tables, a punching bag, dance room, and sports courts. The gym caters to fitness needs, while the upper floor hosts club meetings and rehearsals in various dedicated rooms. Tucked under a staircase is the Tinkerer’s Lab, a haven for innovators. And while the first-floor balcony offers a serene view, the SAC Basement remains a mystery.</p>
+    </div>
+    <div id="mess1-text" class="button-text" style="display: none;">
+      <h2>Mess 1</h2>
+      <p>Mess 1 is the hotspot on campus, with reservations disappearing in seconds. It's where groups gather, doubling table capacities and strengthening friendships. Aditya Caterers runs the show, occasionally spicing things up with special menus for a price. When the regular menu gets old, Yummpy’s and other stalls outside offer relief. And during exams, Mess 1 becomes the All Night Canteen (ANC), serving up comfort food for late-night study sessions..</p>
+    </div>
+    <div id="mess2-text" class="button-text" style="display: none;">
+      <h2>Mess 2</h2>
+      <p>Across the old hockey ground sits Mess 2, another popular spot managed by Shakthi Caterers. It's where friendships are forged over meals, despite occasional separations from friends. Special menus are also on offer here, albeit with an extra cost. When cravings strike, Yummpy’s and neighboring stalls provide alternatives. And during exams, Mess 2 transforms into the All Night Canteen (ANC), fueling students' late-night study sessions.</p>
+    </div>
+    <div id="lib-text" class="button-text" style="display: none;">
+      <h2>Library</h2>
+      <p>The campus library is a sanctuary for study and leisure, offering diverse resources and tranquil study spaces. From textbooks to novels, it caters to every intellectual pursuit. Librarians stand ready to assist with research inquiries or recommend the perfect read. It's equipped with computers, printers, and ample resources for scholarly pursuits, fostering a culture of learning and discovery on campus..</p>
+    </div>
+    <div id="audi-text" class="button-text" style="display: none;">
+      <h2>Auditorium</h2>
+      <p>The campus auditorium is a dynamic space for lectures, performances, and events, featuring modern facilities and ample seating. Managed by dedicated staff, it hosts a variety of cultural and academic activities, enriching campus life and fostering community engagement..</p>
+    </div>
+    <div id="cp-text" class="button-text" style="display: none;">
+      <h2>Connaught Place</h2>
+      <p>
+        Connaught Place, affectionately known as CP, stands as the bustling hub of activity at BITS Pilani. This campus cornerstone offers a range of essential amenities catering to the diverse needs of students. From a bookstore and stationery shop for academic supplies to a hair salon and gift shops for personal needs, CP ensures students have access to everything they require. Additionally, it hosts facilities like a bank branch, medical shop, laundry service, and general store, further enhancing its utility. Moreover, CP serves as a convenient delivery point for couriers from online platforms, streamlining the process for students. With its central location and comprehensive offerings, CP plays a vital role in facilitating the daily routines of BITSians.
+      </p>
+    </div>
+    <div id="fountain-text" class="button-text" style="display: none;">
+      <h2>Fountain</h2>
+      <p>The fountain, gracefully adorning the entrance of the main gate, serves as a welcoming symbol, its cascading waters evoking a sense of serenity and grandeur. As students pass by, it stands as a reminder of the institution's legacy and commitment to beauty amidst academia. Its tranquil presence invites contemplation and reflection, offering a moment of respite from the bustling energy of campus life. With each ripple and splash, the fountain embodies the spirit of renewal and growth, inspiring all who encounter it on their journey through the gates of learning.</p>
+    </div>
+    <div id="ll-text" class="button-text" style="display: none;">
+      <h2>Lover's Lane</h2>
+      <p>LL, or lovers lane, ironically lives up to its name by being isolated, contrary to expectations.</p>
+    </div>
+    <div id="rnt-text" class="button-text" style="display: none;">
+      <h2>Road Not Taken</h2>
+      <p>RNT, the road not taken, serves as a stark reminder of singleness, deterring those uninterested in such reflections.</p>
+    </div>
+    <div id="swmg-text" class="button-text" style="display: none;">
+      <h2>Swimming Pool</h2>
+      <p>A recently opened facility, the swimming pool is a recreational area with a pool that is 25m long and 1.5m deep. Timings are strict and so is the swimwear allowed. Not recommended for those with seasonal allergies or Cherophobia.</p>
+    </div>
+    <div id="rocks-text" class="button-text" style="display: none;">
+      <h2>Rock Garden</h2>
+      <p>The rock garden, a scenic spot on campus, captivates with its natural beauty. Amidst lush greenery and carefully arranged rocks, it offers a tranquil escape for contemplation or leisurely walks. It's a peaceful haven where students and faculty can find solace amidst the busyness of academic life.</p>
+    </div>
+    <div id="direc-text" class="button-text" style="display: none;">
+      <h2>Director's Quarter</h2>
+      <p>The director's quarter, nestled in the campus center, stands as a symbol of exclusivity amidst the student hubbub. Surrounded by activity, its closed gates hint at the privilege reserved for a select few. Despite its central location, it remains a silent observer of the campus dynamics, a nucleus of power and influence.</p>
+    </div>
+    <div id="mc-text" class="button-text" style="display: none;">
+      <h2>Medical Centre</h2>
+      <p>In the realm of exams, the medical centre becomes our ultimate rescue center! Whenever you find yourself unable to take an exam to claim this makeup chance, simply show your medical centre receipt as proof of your need for a rescheduled exam.</p>
+    </div>
+    <div id="gautam-text" class="button-text" style="display: none;">
+      <h2>Gautam Bhawan</h2>
+      <p>It's the smallest boys' hostel with around 200 folks. No QT here, but who needs it when you're close to CP and SAC?. The people living in this hostel have no relation to acad block so it doesn't matter how far it is.</p>
+    </div>
+    <div id="valmiki-text" class="button-text" style="display: none;">
+      <h2>Valmiki Bhawan</h2>
+      <p>This is the new kid in the block! with Great infrastructure and an amazing QT where almost 700 boys are gonna chill. The only downside is, it's a bit far from everything else, but hey, it's worth it!</p>
+    </div>
+    <div id="malaviya-text" class="button-text" style="display: none;">
+      <h2>Malaviya Bhawan</h2>
+      <p>This is where all the first-year girls are gonna hang out but with Second years. Brace yourself, because they say the drama here is legendary, even more than all the other hostels combined!</p>
+    </div>
+  </div>
+
+
+  <!-- Container for button 1 actions -->
+  <a id="go-to-location-button" href="#" target="_blank" class="go-to-location-button">Go to Location</a>
+
+  <!-- Include Leaflet JavaScript -->
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- Include your custom JavaScript file -->
+  <script src="nav.js"></script>
+</body>
+</html>

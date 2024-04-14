@@ -1,0 +1,101 @@
+#map {
+    height: 100%; /* Fill the entire height of the parent container */
+  }
+  
+  /* Additional CSS for the wrapper */
+  .map-wrapper {
+    width: 600px; /* Set the width of the wrapper */
+    height: 550px; /* Set the height of the wrapper */
+    border: 2px solid #ccc; /* Add a border to create a box-like structure */
+    overflow: hidden; /* Hide overflowing content */
+    margin-left: 350px; /* Center the wrapper horizontally */
+    margin-top: 50px;
+  }
+  /* CSS for location buttons */
+  .location-buttons {
+    text-align: left; /* Right-align the buttons */
+    margin-top: 15px; /* Add some top margin */
+  }
+  
+  /* CSS for location buttons container */
+  .location-buttons-container {
+    position: absolute; /* Set positioning to absolute */
+    top: 20px; /* Adjust top position */
+    left: 20px; /* Align container to the right side */
+    z-index: 1000; /* Ensure it's above the map */
+  }
+  
+  
+  .location-buttons button {
+    width: 170px;
+    height: 35px;
+    display: block; /* Change display to block */
+    padding: 10px; /* Add padding to the buttons */
+    margin: 5px 0; /* Add vertical margin between buttons */
+    font-size: 16px; /* Set font size */
+    font-family: quicksand;
+    cursor: pointer; /* Change cursor to pointer on hover */
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove button border */
+    border-radius: 5px; /* Add border radius */
+  }
+  
+  .location-button.active {
+    background-color: green; /* Changed button color when active */
+  }
+  
+  
+  .location-buttons button:hover {
+    background-color: #0056b3; /* Darker background color on hover */
+  }
+  
+  .button-text-container {
+    width: 300px; /* Set width of the box */
+    padding: 20px; /* Add padding */
+    border: 1px solid #ccc; /* Add border */
+    margin-right: 20px; /* Add margin to separate from map */
+    font-family: montserrat;
+  }
+  
+  /* CSS for "Go to Location" button and description textbox */
+  .go-to-location-button {
+    position: absolute; /* Set positioning to absolute */
+    top: 75px; /* Adjust top position */
+    right: 55px; /* Align button to the right side */
+    z-index: 1000; /* Ensure it's above other elements */
+    padding: 10px 20px; /* Add padding to the button */
+    font-size: 16px; /* Set font size */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    background-color: #28a745; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove button border */
+    border-radius: 5px; /* Add border radius */
+  }
+  
+  .button-text-container {
+    display: block; /* Display the textbox as a block element */
+    width: 275px; /* Set width to fill container width minus button padding */
+    height: auto;
+    margin-top: -550px; /* Add top margin */
+    margin-left: 1000px;
+    padding: 10px; /* Add padding to the textbox */
+    font-size: 16px; /* Set font size */
+    border: 1px dotted gray;
+    border-radius: 5px;
+  }
+  
+  .button-text h2 {
+    text-align: center;
+    text-decoration: underline;
+    color: #0a201a;
+    font-size: 2em;
+  }
+  
+  .heading {
+    text-align: center;
+    font-family: cursive;
+    text-decoration: underline;
+    color: rgb(21, 0, 128);
+    font-size: 2.5em;
+  }

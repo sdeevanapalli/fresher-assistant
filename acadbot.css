@@ -1,0 +1,135 @@
+h1{
+    text-align: center;
+    background-color: #000000;
+    color: rgb(255, 119, 0);
+    text-decoration: underline;
+    font-family: cursive;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: rgb(34, 32, 30); /* Dark background for the body */
+    color: white; /* White text color for general readability */
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+p {
+    text-align: center;
+    font-family: monospace;
+    color: rgb(150, 142, 142);
+    font-size: 1.4em;
+}
+
+.chat-container {
+    position: relative; /* Ensures dropdown positions relative to this container */
+    width: 700px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -200px;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%; /* Positions the dropdown right below the chat-container */
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+
+.messages {
+    flex-grow: 1;
+    width: 180%;
+    background-color: rgb(41, 39, 39); /* Dark background for messages */
+    color: white; /* Ensure text within messages is white */
+    padding: 10px;
+    border: 3px solid black;
+    margin: 15px;
+    border-radius: 0px;
+    overflow-y: auto;
+}
+
+input {
+    margin-top: 20px;
+    border: 3px solid rgb(0, 0, 0);
+    background-color: rgb(29, 31, 34); /* Darker background for input */
+    color: rgb(255, 255, 255); /* White text for input */
+    padding: 15px;
+    border-radius: 0;
+    width: calc(179% - 30px);
+}
+
+
+::-webkit-input-placeholder { 
+    color: #ffffff; /* Lighter placeholder text for visibility */
+}
+
+.bot, #bot {
+    margin-top: 7px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5em;
+
+    color: #ffffff; /* Green text color for bot messages */
+    margin-right: auto;
+}
+
+#user {
+    margin-right: 40px;
+}
+
+.response {
+    display: flex;
+    align-items: center;
+    margin: 1%;
+}
+.dropdown-content {
+    display: none; /* Initially hidden */
+    position: relative;
+    background-color: #333;
+    border: 1px solid #ddd;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 5px;
+    width: calc(182% - 30px);
+    border-radius: 0;
+}
+
+.dropdown-content div {
+    color: rgb(175, 96, 96); /* White text for dropdown items */
+    cursor: pointer;
+    padding: 5px;
+}
+
+.dropdown-content div:hover {
+    background-color: #252020; /* Slightly lighter background on hover */
+}
+
+
+.user, #user {
+    text-align: right;
+    font-size: 1.5em;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    color: #fefefe;  /* Assuming white text color for contrast against a dark background */
+}

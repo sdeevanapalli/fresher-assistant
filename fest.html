@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fests</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 200px 0;
+            font-size: 120px;
+            transition: padding 0.5s ease;
+        }
+        .content {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        .box-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+        .box {
+            width: 15%;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 120px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 20px;
+            transition: transform 0.5s ease;
+            position: relative;
+        }
+        .box:hover {
+            transform: translateY(-10px);
+        }
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 16px;
+        }
+        .text-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #333;
+        }
+        .card-front img,
+        .card-back img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        Fests
+    </div>
+    <div class="box-container">
+        <div class="box">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="atmos.jpg" alt="">
+
+                    </div>
+                    <div class="card-back">
+                        <div class="text-container">
+                            <h3>Atmos</h3>
+                            <p>Technical fest</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="https://via.placeholder.com/300" alt="">
+                    </div>
+                    <div class="card-back">
+                        <div class="text-container">
+                            <h3>Arena</h3>
+                            <p>Sports fest</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="https://via.placeholder.com/300" alt="">
+                    </div>
+                    <div class="card-back">
+                        <div class="text-container">
+                            <h3>Pearl</h3>
+                            <p>Cultural Fest</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add event listener for scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            const content = document.querySelector('.content');
+
+            // Add 'scrolled' class when scrolled down
+            if (window.scrollY > header.offsetHeight / 2) {
+                header.classList.add('scrolled');
+                content.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+                content.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
