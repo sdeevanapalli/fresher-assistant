@@ -387,3 +387,7 @@ body {
     object-fit: cover;
     border-radius: 16px;
 }
+
+footer {
+    text-align: center;
+}

@@ -133,3 +133,6 @@ input {
     margin-left: auto;
     color: #fefefe;  /* Assuming white text color for contrast against a dark background */
 }
+footer {
+    text-align: center;
+}
