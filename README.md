@@ -22,6 +22,7 @@ To run this code:
 ## Important Note
 
 Strictly no content should be copied from this repository. This project was developed as part of a hackathon, and all content is original and protected by copyright.
+
 For suggestions and improvements, feel free to open a pull request or email at `s.deevanapalli@gmail.com`
 
 Thank you for visiting the BITS Hyderabad Freshers Assistant Website!
