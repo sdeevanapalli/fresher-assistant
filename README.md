@@ -13,9 +13,9 @@ This website is designed to assist new joiners, freshers, and guests in getting 
 
 To run this code:
 
-1. Clone the repository using the following command:
+1. Clone the repository using the following command: `git clone https://github.com/sdeevanapalli/fresher-assistant`
 
-2. Navigate into the cloned directory:
+2. Navigate into the cloned directory on your local machine.
 
 3. Open the `web.html` file on a live server. You can use tools like Live Server in Visual Studio Code or any other local server tool of your choice.
 
