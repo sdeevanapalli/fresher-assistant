@@ -3,7 +3,7 @@
 This website was created during a hackathon at BITS Pilani Hyderabad Campus by a team of four programmers:
 
 - [shambhavi233](https://github.com/shambhavi233) (Shambhavi Rani)
-- [mihikamaheshwari](https://github.com/mihikamaheshwari) (Mihika Maheshwari)
+- [mihika185](https://github.com/mihika185) (Mihika Maheshwari)
 - [dedipyak20](https://github.com/dedipyak20) (Dedipya)
 - [sdeevanapalli](https://github.com/sdeevanapalli) (Shriniketh Deevanapalli)
 
@@ -22,5 +22,7 @@ To run this code:
 ## Important Note
 
 Strictly no content should be copied from this repository. This project was developed as part of a hackathon, and all content is original and protected by copyright.
+
+For suggestions and improvements, feel free to open a pull request or email at `s.deevanapalli@gmail.com`
 
 Thank you for visiting the BITS Hyderabad Freshers Assistant Website!
