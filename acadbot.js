@@ -1,177 +1,89 @@
 document.addEventListener("DOMContentLoaded", () => {
-    document.querySelector("#input").addEventListener("keydown", function (e) {
-        if (e.code === "Enter") {
-            let input = document.getElementById("input").value;
-            document.getElementById("input").value = "";
+    const inputField = document.getElementById("input");
+    const dropdownContent = document.getElementById("dropdownContent");
+    const messagesContainer = document.getElementById("messages");
+
+    // Handle Enter key press for input submission
+    inputField.addEventListener("keydown", (e) => {
+        if (e.code === "Enter" && inputField.value.trim() !== "") {
+            let input = inputField.value.trim();
+            inputField.value = "";
             let response = compare(input);
             addChatEntry(input, response);
         }
     });
-  });
-  
-  // Listen for input event to suggest questions
-  document.getElementById("input").addEventListener("input", function (e) {
-    const inputText = e.target.value.toLowerCase().trim();
-    suggestQuestions(inputText);
-  });
-  
-  function suggestQuestions(input) {
-    console.log("Input:", input); // Check if input is received
-    const dropdownContent = document.getElementById("dropdownContent");
-    // Clear previous suggestions
-    dropdownContent.innerHTML = "";
-  
-    // Keywords and corresponding suggested questions
-    const suggestions = {
-        "cou": [
-            "what courses are offered at bphc?",
-            "what are standard courses?",
-        ],
-        "cdcs": [
-            "what are cdcs?"
-        ],
-        "wh": [
-            "what courses are offered at bphc?",
-            "what are standard courses?",
-            "what are cdcs?"
-        ],
-        "how": [
-            "how many electives are there?",
-        ],
-        "mi": [
-          "what are minor courses?",
-        ],
-        "elec": [
-          "how many electives are there?",
-        ],
-        // Add more keywords and suggestions as needed
-    };
-  
-    // Check if input contains any keyword
-    for (const keyword in suggestions) {
-        if (input.includes(keyword)) {
-            console.log("Keyword found:", keyword); // Check if keyword is found
-            const questions = suggestions[keyword];
-            questions.forEach(question => {
-                const suggestionDiv = document.createElement("div");
-                suggestionDiv.textContent = question;
-                suggestionDiv.addEventListener("click", function () {
-                    document.getElementById("input").value = question;
-                    clearDropdown(); // Clear suggestions after selection
+
+    // Handle input event for suggestions
+    inputField.addEventListener("input", (e) => {
+        suggestQuestions(e.target.value.toLowerCase().trim());
+    });
+
+    function suggestQuestions(input) {
+        dropdownContent.innerHTML = "";
+
+        const suggestions = {
+            "cou": ["What courses are offered at BPHC?", "What are standard courses?"],
+            "cdcs": ["What are CDCS?"],
+            "wh": ["What courses are offered at BPHC?", "What are standard courses?", "What are CDCS?"],
+            "how": ["How many electives are there?"],
+            "mi": ["What are minor courses?"],
+            "elec": ["How many electives are there?"]
+        };
+
+        let found = Object.entries(suggestions).some(([keyword, questions]) => {
+            if (input.includes(keyword)) {
+                questions.forEach((question) => {
+                    const suggestionDiv = document.createElement("div");
+                    suggestionDiv.textContent = question;
+                    suggestionDiv.classList.add("suggestion-item");
+
+                    suggestionDiv.addEventListener("click", () => {
+                        inputField.value = question;
+                        clearDropdown();
+                    });
+
+                    dropdownContent.appendChild(suggestionDiv);
                 });
-                dropdownContent.appendChild(suggestionDiv);
-            });
-        }
+                return true; // Stop checking further keywords once a match is found
+            }
+        });
+
+        dropdownContent.style.display = found ? "block" : "none";
     }
-  
-    // Show or hide the dropdown based on suggestions
-    if (dropdownContent.children.length > 0) {
-        console.log("Suggestions available:", dropdownContent.children.length); // Check if suggestions are available
-        dropdownContent.style.display = "block";
-    } else {
-        console.log("No suggestions available");
+
+    function clearDropdown() {
+        dropdownContent.innerHTML = "";
         dropdownContent.style.display = "none";
     }
-  }
-  
-  function clearDropdown() {
-    document.getElementById("dropdownContent").innerHTML = "";
-    document.getElementById("dropdownContent").style.display = "none";
-  };
-  
-  function compare(input) {
-    input = input.toLowerCase().trim();
-    const responses = {
-        "what courses are offered at bphc?": [
-            "Mainly three types of courses are offered: Standard Courses, Labs and Formal Projects"
-        ],
-        "what are standard courses?": [
-            "Make up majority of coursework.They consist of three components: Lectures, Tutorials and\nPracticals."
-        ],
-        "what are cdcs?": [
-            "Core Disciplinary Courses are mandatory courses related to your choses branch of study.\nGraduation is not possible without these courses",
-        ],
-        "how many electives are there?": [
-            "Three electives: Disciplinary electives(del), Humanities Electives(huel) and\nOpen Electives(opels)."
-        ],
-        "what are minor courses?": [
-            "By paying a nominal fee, achieving the CGPA cutoff, and fulfulling the course requirement\nyoucan earn an additional degree."
-        ],
-        "when can we take up formal projects?": [
-          "You don't need to worry about these until the end of 2nd year, but you can also apply for these\nprojexts earlier."
-        ],
-        // Add more questions and answers as needed
-    };
-  
-    if (responses.hasOwnProperty(input)) {
-        const answers = responses[input];
-        return answers[Math.floor(Math.random() * answers.length)];
-    } else {
-        return "I'm not sure how to respond to that.";
+
+    function compare(input) {
+        const responses = {
+            "what courses are offered at bphc?": "Mainly three types of courses are offered: Standard Courses, Labs, and Formal Projects.",
+            "what are standard courses?": "They make up the majority of coursework, consisting of Lectures, Tutorials, and Practicals.",
+            "what are cdcs?": "Core Disciplinary Courses (CDCs) are mandatory courses related to your chosen branch of study. Graduation is not possible without them.",
+            "how many electives are there?": "There are three types of electives: Disciplinary Electives (DELs), Humanities Electives (HUELs), and Open Electives (OPELs).",
+            "what are minor courses?": "By paying a nominal fee, achieving the CGPA cutoff, and fulfilling the course requirements, you can earn an additional degree.",
+            "when can we take up formal projects?": "You usually start formal projects towards the end of your 2nd year, but you can apply earlier if eligible."
+        };
+
+        return responses[input.toLowerCase()] || "I'm not sure how to respond to that.";
     }
-  }
-  
-  function addChatEntry(input, product) {
-    const messagesContainer = document.getElementById("messages");
-    
-    let userDiv = document.createElement("div");
-    userDiv.id = "user";
-    userDiv.className = "user response";
-    userDiv.innerHTML = `${input}`;
-    messagesContainer.appendChild(userDiv);
-   
-    let botDiv = document.createElement("div");
-    let botText = document.createElement("span");
-    botDiv.id = "bot";
-    botDiv.className = "bot response";
-    botText.innerText = "Typing...";
-    botDiv.appendChild(botText);
-    messagesContainer.appendChild(botDiv);
-   
-    setTimeout(() => {
-        botText.innerText = `${product}`;
-    }, 2000);
-  }
-  
-  // function compare(utterancesArray, answersArray, string) {
-  //   let reply;
-  //   let replyFound = false;
-  //   for (let x = 0; x < utterancesArray.length; x++) {
-  //     for (let y = 0; y < utterancesArray[x].length; y++) {
-  //       if (utterancesArray[x][y] === string) {
-  //         let replies = answersArray[x];
-  //         reply = replies[Math.floor(Math.random() * replies.length)];
-  //         replyFound = true;
-  //         break;
-  //       }
-  //     }
-  //     if (replyFound) {
-  //       break;
-  //     }
-  //   }
-  //   return reply;
-  // }
-  
-  // function addChatEntry(input, product) {
-  //   const messagesContainer = document.getElementById("messages");
-  //   let userDiv = document.createElement("div");
-  //   userDiv.id = "user";
-  //   userDiv.className = "user response";
-  //   userDiv.innerHTML = <span>${input}</span>;
-  //   messagesContainer.appendChild(userDiv);
-  
-  //   let botDiv = document.createElement("div");
-  //   let botText = document.createElement("span");
-  //   botDiv.id = "bot";
-  //   botDiv.className = "bot response";
-  //   botText.innerText = "Typing...";
-  //   botDiv.appendChild(botText);
-  //   messagesContainer.appendChild(botDiv);
-  
-  //   messagesContainer.scrollTop =
-  //     messagesContainer.scrollHeight - messagesContainer.clientHeight;
-  
-  //   setTimeout(() => {
-  //     botText.innerText = ${product};
-  //   }, 2000);
-  // }
+
+    function addChatEntry(input, response) {
+        let userDiv = document.createElement("div");
+        userDiv.className = "user response";
+        userDiv.innerHTML = `<span>${input}</span>`;
+        messagesContainer.appendChild(userDiv);
+
+        let botDiv = document.createElement("div");
+        botDiv.className = "bot response";
+        botDiv.innerHTML = `<span class="typing">Typing...</span>`;
+        messagesContainer.appendChild(botDiv);
+
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+        setTimeout(() => {
+            botDiv.innerHTML = `<span>${response}</span>`;
+        }, 1000);
+    }
+});
